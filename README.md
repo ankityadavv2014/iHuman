@@ -1,6 +1,6 @@
-# 🌌 Antigravity Awesome Skills: 234+ Agentic Skills for Claude Code, Gemini CLI, Cursor, Copilot & More
+# 🌌 Antigravity Awesome Skills: 235+ Agentic Skills for Claude Code, Gemini CLI, Cursor, Copilot & More
 
-> **The Ultimate Collection of 234+ Universal Agentic Skills for AI Coding Assistants — Claude Code, Gemini CLI, Codex CLI, Antigravity IDE, GitHub Copilot, Cursor, OpenCode**
+> **The Ultimate Collection of 235+ Universal Agentic Skills for AI Coding Assistants — Claude Code, Gemini CLI, Codex CLI, Antigravity IDE, GitHub Copilot, Cursor, OpenCode**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Anthropic-purple)](https://claude.ai)
@@ -11,7 +11,7 @@
 [![OpenCode](https://img.shields.io/badge/OpenCode-CLI-gray)](https://github.com/opencode-ai/opencode)
 [![Antigravity](https://img.shields.io/badge/Antigravity-DeepMind-red)](https://github.com/anthropics/antigravity)
 
-**Antigravity Awesome Skills** is a curated, battle-tested library of **234 high-performance agentic skills** designed to work seamlessly across all major AI coding assistants:
+**Antigravity Awesome Skills** is a curated, battle-tested library of **235 high-performance agentic skills** designed to work seamlessly across all major AI coding assistants:
 
 - 🟣 **Claude Code** (Anthropic CLI)
 - 🔵 **Gemini CLI** (Google DeepMind)
@@ -55,7 +55,7 @@ git clone https://github.com/sickn33/antigravity-awesome-skills.git .agent/skill
 @brainstorming help me design a todo app
 ```
 
-That's it! Your AI assistant now has 234 specialized skills. 🎉
+That's it! Your AI assistant now has 235 specialized skills. 🎉
 
 **Additional Resources:**
 
@@ -109,7 +109,7 @@ The repository is organized into several key areas of expertise:
 
 ---
 
-## Full Skill Registry (234/234)
+## Full Skill Registry (235/235)
 
 Below is the complete list of available skills. Each skill folder contains a `SKILL.md` that can be imported into Antigravity or Claude Code.
 
@@ -132,6 +132,7 @@ Below is the complete list of available skills. Each skill folder contains a `SK
 | **Algolia Search**                                  | Algolia search implementation, indexing strategies, React InstantSearch, relevance tuning.                                                                                                                                                                                                                                                                                                                                                               | `skills/algolia-search`                      |
 | **Algorithmic Art**                                 | Creating algorithmic art using p5.                                                                                                                                                                                                                                                                                                                                                                                                                       | `skills/algorithmic-art`                     |
 | **Analytics Tracking**                              | Set up analytics tracking with GA4, GTM, and custom event implementations for marketing measurement.                                                                                                                                                                                                                                                                                                                                                     | `skills/analytics-tracking`                  |
+| **API Documentation Generator**                     | Generate comprehensive, developer-friendly API documentation from code, including endpoints, parameters, examples, and best practices.                                                                                                                                                                                                                                                                                                                   | `skills/api-documentation-generator`         |
 | **API Fuzzing for Bug Bounty**                      | This skill should be used when the user asks to "test API security", "fuzz APIs", "find IDOR vulnerabilities", "test REST API", "test GraphQL", "API penetration testing", "bug bounty API testing", or needs guidance on API security assessment techniques.                                                                                                                                                                                            | `skills/api-fuzzing-bug-bounty`              |
 | **API Patterns**                                    | API design principles and decision-making. REST vs GraphQL vs tRPC selection, response formats, versioning.                                                                                                                                                                                                                                                                                                                                              | `skills/api-patterns`                        |
 | **App Builder**                                     | Main application building orchestrator. Creates full-stack applications from natural language requests.                                                                                                                                                                                                                                                                                                                                                  | `skills/app-builder`                         |
