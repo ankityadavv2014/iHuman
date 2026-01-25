@@ -1,90 +1,178 @@
-# ❓ Frequently Asked Questions (V3)
+# ❓ Frequently Asked Questions (FAQ)
 
-**Got questions?** Here are answers to the most common questions about Antigravity Awesome Skills.
+**Got questions?** You're not alone! Here are answers to the most common questions about Antigravity Awesome Skills.
 
 ---
 
-## 🔒 Security & Trust (V3)
+## 🎯 General Questions
 
-### Q: What do the Risk Labels mean?
+### What are "skills" exactly?
 
-In V3, we classify skills so you know what you're running:
+Skills are specialized instruction files that teach AI assistants how to handle specific tasks. Think of them as expert knowledge modules that your AI can load on-demand.
+**Simple analogy:** Just like you might consult different experts (a lawyer, a doctor, a mechanic), these skills let your AI become an expert in different areas when you need them.
 
-- ⚪ **Safe (White/Blue)**: Read-only, planning, or benign skills. Safe to run anywhere.
-- 🔴 **Risk (Red)**: Skills that modify files, delete resources, or perform security scans. **Use with caution.**
+### Do I need to install all 250+ skills?
+
+**No!** When you clone the repository, all skills are available, but your AI only loads them when you explicitly invoke them with `@skill-name`.
+It's like having a library - all books are there, but you only read the ones you need.
+**Pro Tip:** Use [Starter Packs](docs/BUNDLES.md) to install only what matches your role.
+
+### Which AI tools work with these skills?
+
+- ✅ **Claude Code** (Anthropic CLI)
+- ✅ **Gemini CLI** (Google)
+- ✅ **Codex CLI** (OpenAI)
+- ✅ **Cursor** (AI IDE)
+- ✅ **Antigravity IDE**
+- ✅ **OpenCode**
+- ⚠️ **GitHub Copilot** (partial support via copy-paste)
+
+### Are these skills free to use?
+
+**Yes!** This repository is licensed under MIT License.
+
+- ✅ Free for personal use
+- ✅ Free for commercial use
+- ✅ You can modify them
+
+### Do skills work offline?
+
+The skill files themselves are stored locally on your computer, but your AI assistant needs an internet connection to function.
+
+---
+
+## 🔒 Security & Trust (V3 Update)
+
+### What do the Risk Labels mean?
+
+We classify skills so you know what you're running:
+
+- ⚪ **Safe (White/Blue)**: Read-only, planning, or benign skills.
+- 🔴 **Risk (Red)**: Skills that modify files (delete), use network scanners, or perform destructive actions. **Use with caution.**
 - 🟣 **Official (Purple)**: Maintained by trusted vendors (Anthropic, DeepMind, etc.).
 
-### Q: Can these skills hack my computer?
+### Can these skills hack my computer?
 
-**No.** Skills are just text files (markdown instructions). However, they _instruct_ the AI to run commands.
-If a skill says "delete all files", your AI might try to do it.
-_Always review the code before creating a skill, and check the Risk label._
+**No.** Skills are text files. However, they _instruct_ the AI to run commands. If a skill says "delete all files", a compliant AI might try to do it.
+_Always check the Risk label and review the code._
 
 ---
 
 ## 📦 Installation & Setup
 
-### Q: Do I need to install all 250+ skills?
+### Where should I install the skills?
 
-**No!** When you clone the repository, all skills are available, but your AI only loads them when you explicitly invoke them with `@skill-name`.
-It's like having a library - all the books are there, but you only read the ones you need.
-_Pro Tip: Use [Starter Packs](docs/BUNDLES.md) to install only what matches your role._
-
-### Q: Where should I install the skills?
-
-The universal path is `.agent/skills/`:
+The universal path that works with most tools is `.agent/skills/`:
 
 ```bash
 git clone https://github.com/sickn33/antigravity-awesome-skills.git .agent/skills
 ```
 
-### Q: Does this work with Windows?
+**Tool-specific paths:**
+
+- Claude Code: `.claude/skills/`
+- Gemini CLI: `.gemini/skills/`
+- Cursor: `.cursor/skills/` or project root
+
+### Does this work with Windows?
 
 **Yes**, but some "Official" skills use **symlinks** which Windows handles poorly by default.
 Run git with:
-`git clone -c core.symlinks=true ...`
+
+```bash
+git clone -c core.symlinks=true https://github.com/sickn33/antigravity-awesome-skills.git .agent/skills
+```
+
 Or enable "Developer Mode" in Windows Settings.
+
+### How do I update skills?
+
+Navigate to your skills directory and pull the latest changes:
+
+```bash
+cd .agent/skills
+git pull origin main
+```
 
 ---
 
-## 🛠️ Usage & Troubleshooting
+## 🛠️ Using Skills
 
-### Q: How do I invoke a skill?
+### How do I invoke a skill?
 
-In your AI chat (Claude, Cursor, etc.), just use the `@` mention:
+Use the `@` symbol followed by the skill name:
 
 ```
 @brainstorming help me design a todo app
 ```
 
-### Q: My AI assistant doesn't recognize skills. Why?
+### Can I use multiple skills at once?
 
-1.  **Wrong Path**: Did you clone to `.agent/skills/`? Check your tool's settings.
-2.  **Restart Needed**: Some tools (like Cursor) need a restart to index new files.
-3.  **Typos**: Check `ls .agent/skills/` to see the exact folder name.
+**Yes!** You can invoke multiple skills:
 
-### Q: What if a skill gives bad code?
+```
+@brainstorming help me design this, then use @writing-plans to create a task list.
+```
 
-Please [Open an Issue](https://github.com/sickn33/antigravity-awesome-skills/issues)!
-Describe what happened and which skill was responsible. We update skills regularly to fix hallucinations.
+### How do I know which skill to use?
+
+1.  **Browse the README**: Check the [Full Skill Registry](README.md#full-skill-registry-253253).
+2.  **Search**: `ls skills/ | grep "keyword"`
+3.  **Ask your AI**: "What skills do you have for testing?"
+
+---
+
+## 🏗️ Troubleshooting
+
+### My AI assistant doesn't recognize skills
+
+**Possible causes:**
+
+1.  **Wrong installation path**: Check your tool's docs. Try `.agent/skills/`.
+2.  **Restart Needed**: Restart your AI/IDE after installing.
+3.  **Typos**: Did you type `@brain-storming` instead of `@brainstorming`?
+
+### A skill gives incorrect or outdated advice
+
+Please [Open an issue](https://github.com/sickn33/antigravity-awesome-skills/issues)!
+Include:
+
+- Which skill
+- What went wrong
+- What should happen instead
 
 ---
 
 ## 🤝 Contribution
 
-### Q: My PR failed "Quality Bar" check. Why?
+### I'm new to open source. Can I contribute?
+
+**Absolutely!** We welcome beginners.
+
+- Fix typos
+- Add examples
+- Improve docs
+  Check out [CONTRIBUTING.md](CONTRIBUTING.md) for instructions.
+
+### My PR failed "Quality Bar" check. Why?
 
 V3 introduces automated quality control. Your skill might be missing:
 
-1.  A valid `description` in the metadata.
+1.  A valid `description`.
 2.  Usage examples.
-    Or it might be triggering a security filter. Run `python3 scripts/validate_skills.py` locally to see the error.
+    Run `python3 scripts/validate_skills.py` locally to check before you push.
 
-### Q: Can I update an "Official" skill?
+### Can I update an "Official" skill?
 
-**No.** Official skills (in `skills/official/`) are mirrored from vendors.
-Open an issue instead, and we will forward it to the maintainers.
+**No.** Official skills (in `skills/official/`) are mirrored from vendors. Open an issue instead.
 
-### Q: Can I make my own skills?
+---
 
-**Absolutely!** Check out the **@skill-creator** skill or read [CONTRIBUTING.md](CONTRIBUTING.md).
+## 💡 Pro Tips
+
+- Start with `@brainstorming` before building anything new
+- Use `@systematic-debugging` when stuck on bugs
+- Try `@test-driven-development` for better code quality
+- Explore `@skill-creator` to make your own skills
+
+**Still confused?** [Open a discussion](https://github.com/sickn33/antigravity-awesome-skills/discussions) and we'll help you out! 🙌
