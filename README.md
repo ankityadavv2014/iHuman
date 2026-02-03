@@ -138,6 +138,42 @@ We have moved the full skill registry to a dedicated catalog to keep this README
 
 To use these skills with **Claude Code**, **Gemini CLI**, **Codex CLI**, **Cursor**, **Antigravity**, **OpenCode**, or **AdaL**:
 
+### OpenCode Install (official)
+
+OpenCode’s official docs recommend the install script:
+
+```bash
+curl -fsSL https://opencode.ai/install | bash
+```
+
+Other supported options (see docs for updates):
+
+```bash
+# npm
+npm install -g opencode-ai
+
+# Bun / pnpm / Yarn
+bun install -g opencode-ai
+pnpm install -g opencode-ai
+yarn global add opencode-ai
+
+# Homebrew (macOS/Linux)
+brew install anomalyco/tap/opencode
+
+# Arch (Paru)
+paru -S opencode-bin
+
+# Windows (Chocolatey / Scoop)
+choco install opencode
+scoop bucket add extras
+scoop install extras/opencode
+
+# Docker
+docker run -it --rm ghcr.io/anomalyco/opencode
+```
+
+Full instructions: [OpenCode install docs](https://open-code.ai/en/docs).
+
 ### Option A: npx (recommended)
 
 ```bash
