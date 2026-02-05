@@ -1,0 +1,555 @@
+[
+  {
+    "id": "full-stack-saas-mvp",
+    "name": "Full-Stack SaaS MVP",
+    "description": "Complete SaaS application with frontend, backend, database, auth, and deployment",
+    "estimatedTime": "40-50 hours (5-6 weeks elapsed)",
+    "complexity": "intermediate",
+    "tags": ["saas", "web", "full-stack", "startup"],
+    "phases": [
+      {
+        "phase": "Foundation (Week 1-2)",
+        "description": "Set up core infrastructure",
+        "skills": [
+          "react-setup",
+          "backend-setup",
+          "db-config",
+          "docker-compose-setup"
+        ],
+        "parallelizable": true,
+        "dependencies": {}
+      },
+      {
+        "phase": "Authentication (Week 2-3)",
+        "description": "Implement user authentication",
+        "skills": [
+          "auth-setup",
+          "user-db-schema",
+          "jwt-config",
+          "session-management"
+        ],
+        "parallelizable": false,
+        "dependencies": {
+          "auth-setup": ["backend-setup", "db-config"],
+          "user-db-schema": ["db-config"],
+          "jwt-config": ["auth-setup"],
+          "session-management": ["auth-setup"]
+        },
+        "decisionPoints": [
+          {
+            "key": "authProvider",
+            "question": "Which authentication provider?",
+            "options": ["NextAuth.js", "Auth0", "Custom JWT", "Firebase Auth"],
+            "default": "NextAuth.js",
+            "conditional": {
+              "NextAuth.js": {
+                "skipSkills": ["custom-auth-setup"],
+                "addSkills": [{ "phase": "Authentication", "skills": ["nextauth-config"] }]
+              },
+              "Auth0": {
+                "skipSkills": ["jwt-config", "nextauth-config"],
+                "addSkills": [{ "phase": "Authentication", "skills": ["auth0-integration"] }]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "phase": "Core Features (Week 3-5)",
+        "description": "Build core application features",
+        "skills": [
+          "api-design",
+          "data-models",
+          "component-library",
+          "state-management"
+        ],
+        "parallelizable": true,
+        "dependencies": {
+          "api-design": ["auth-setup", "db-config"],
+          "component-library": ["react-setup"],
+          "state-management": ["react-setup"]
+        }
+      },
+      {
+        "phase": "Quality Assurance (Week 5-6)",
+        "description": "Add testing and optimization",
+        "skills": [
+          "testing-setup",
+          "e2e-tests",
+          "performance-optimization",
+          "security-audit"
+        ],
+        "parallelizable": true,
+        "dependencies": {
+          "testing-setup": ["react-setup", "backend-setup"],
+          "e2e-tests": ["testing-setup"],
+          "performance-optimization": ["react-setup", "backend-setup"],
+          "security-audit": ["auth-setup"]
+        }
+      },
+      {
+        "phase": "Operations (Week 6-7)",
+        "description": "Set up monitoring and CI/CD",
+        "skills": [
+          "ci-cd-setup",
+          "monitoring-setup",
+          "logging-config",
+          "alerting-setup"
+        ],
+        "parallelizable": true,
+        "dependencies": {}
+      },
+      {
+        "phase": "Deployment (Week 8)",
+        "description": "Deploy to production",
+        "skills": [
+          "production-build",
+          "docker-image-build",
+          "deploy-to-cloud",
+          "domain-config"
+        ],
+        "parallelizable": false,
+        "dependencies": {
+          "docker-image-build": ["production-build"],
+          "deploy-to-cloud": ["docker-image-build", "ci-cd-setup"],
+          "domain-config": ["deploy-to-cloud"]
+        },
+        "decisionPoints": [
+          {
+            "key": "deploymentPlatform",
+            "question": "Where do you want to deploy?",
+            "options": ["Vercel", "AWS", "DigitalOcean", "Heroku", "Self-hosted"],
+            "default": "Vercel",
+            "conditional": {
+              "Vercel": {
+                "skipSkills": ["aws-setup", "digitalocean-setup"],
+                "updateParams": { "deploy-to-cloud": { "platform": "vercel" } }
+              },
+              "AWS": {
+                "skipSkills": ["vercel-setup"],
+                "addSkills": [{ "phase": "Deployment", "skills": ["aws-vpc-setup", "rds-setup", "s3-config"] }]
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "successMetrics": [
+      "✅ App deployed to production",
+      "✅ Auth system working",
+      "✅ Database persisting data",
+      "✅ Tests passing (>80% coverage)",
+      "✅ CI/CD pipeline active",
+      "✅ Monitoring and alerting configured",
+      "✅ Custom domain configured"
+    ]
+  },
+  {
+    "id": "ml-data-pipeline",
+    "name": "ML Data Pipeline",
+    "description": "Complete data pipeline for machine learning with ETL, warehouse, and experimentation",
+    "estimatedTime": "20-30 hours (2-3 weeks)",
+    "complexity": "advanced",
+    "tags": ["ml", "data", "pipeline", "analytics"],
+    "phases": [
+      {
+        "phase": "Environment Setup",
+        "description": "Configure Python environment and tools",
+        "skills": [
+          "python-env-setup",
+          "jupyter-setup",
+          "dvc-config",
+          "mlflow-setup"
+        ],
+        "parallelizable": true,
+        "dependencies": {}
+      },
+      {
+        "phase": "Data Infrastructure",
+        "description": "Set up data storage and warehousing",
+        "skills": [
+          "data-loading-setup",
+          "postgres-data-warehouse",
+          "data-validation",
+          "dbt-project"
+        ],
+        "parallelizable": false,
+        "dependencies": {
+          "data-validation": ["data-loading-setup"],
+          "dbt-project": ["postgres-data-warehouse"]
+        },
+        "decisionPoints": [
+          {
+            "key": "dataWarehouse",
+            "question": "Which data warehouse?",
+            "options": ["PostgreSQL", "BigQuery", "Snowflake", "Redshift"],
+            "default": "PostgreSQL",
+            "conditional": {
+              "PostgreSQL": {
+                "updateParams": { "db-setup": { "warehouse": "postgresql" } }
+              },
+              "BigQuery": {
+                "skipSkills": ["postgres-data-warehouse"],
+                "addSkills": [{ "phase": "Data Infrastructure", "skills": ["bigquery-setup"] }]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "phase": "ETL Pipeline",
+        "description": "Build automated data processing",
+        "skills": [
+          "airflow-dag-setup",
+          "data-transformation",
+          "feature-engineering",
+          "pipeline-orchestration"
+        ],
+        "parallelizable": false,
+        "dependencies": {
+          "airflow-dag-setup": ["postgres-data-warehouse"],
+          "data-transformation": ["airflow-dag-setup"],
+          "feature-engineering": ["data-transformation"],
+          "pipeline-orchestration": ["feature-engineering"]
+        }
+      },
+      {
+        "phase": "ML Experimentation",
+        "description": "Set up model training and tracking",
+        "skills": [
+          "model-training-setup",
+          "hyperparameter-tuning",
+          "experiment-tracking",
+          "model-registry"
+        ],
+        "parallelizable": true,
+        "dependencies": {
+          "model-training-setup": ["feature-engineering"],
+          "experiment-tracking": ["mlflow-setup"],
+          "model-registry": ["experiment-tracking"]
+        }
+      },
+      {
+        "phase": "Monitoring & Quality",
+        "description": "Add data quality and pipeline monitoring",
+        "skills": [
+          "data-quality-tests",
+          "pipeline-monitoring",
+          "alerting-config",
+          "documentation-setup"
+        ],
+        "parallelizable": true,
+        "dependencies": {
+          "pipeline-monitoring": ["airflow-dag-setup"]
+        }
+      }
+    ],
+    "successMetrics": [
+      "✅ Python environment configured",
+      "✅ Data warehouse running",
+      "✅ ETL pipeline executing automatically",
+      "✅ Feature engineering working",
+      "✅ Model training automated",
+      "✅ Experiment tracking configured",
+      "✅ Data quality tests passing"
+    ]
+  },
+  {
+    "id": "devops-infrastructure",
+    "name": "DevOps Infrastructure as Code",
+    "description": "Complete infrastructure setup with containerization, orchestration, and monitoring",
+    "estimatedTime": "30-40 hours (3-4 weeks)",
+    "complexity": "advanced",
+    "tags": ["devops", "infrastructure", "kubernetes", "cloud"],
+    "phases": [
+      {
+        "phase": "Cloud Setup",
+        "description": "Configure cloud provider and networking",
+        "skills": [
+          "aws-account-setup",
+          "terraform-init",
+          "vpc-setup",
+          "security-groups"
+        ],
+        "parallelizable": true,
+        "dependencies": {
+          "terraform-init": ["aws-account-setup"],
+          "vpc-setup": ["terraform-init"],
+          "security-groups": ["vpc-setup"]
+        },
+        "decisionPoints": [
+          {
+            "key": "cloudProvider",
+            "question": "Which cloud provider?",
+            "options": ["AWS", "GCP", "Azure", "DigitalOcean"],
+            "default": "AWS",
+            "conditional": {
+              "AWS": {
+                "updateParams": { "cloud-setup": { "provider": "aws" } }
+              },
+              "GCP": {
+                "skipSkills": ["aws-account-setup"],
+                "addSkills": [{ "phase": "Cloud Setup", "skills": ["gcp-project-setup"] }]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "phase": "Containerization",
+        "description": "Set up Docker and container registry",
+        "skills": [
+          "docker-setup",
+          "docker-compose-prod",
+          "container-registry-setup",
+          "image-optimization"
+        ],
+        "parallelizable": true,
+        "dependencies": {
+          "docker-compose-prod": ["docker-setup"],
+          "container-registry-setup": ["docker-setup"]
+        }
+      },
+      {
+        "phase": "Orchestration",
+        "description": "Set up Kubernetes cluster",
+        "skills": [
+          "kubernetes-cluster",
+          "helm-charts",
+          "service-mesh-config",
+          "ingress-setup"
+        ],
+        "parallelizable": false,
+        "dependencies": {
+          "kubernetes-cluster": ["vpc-setup"],
+          "helm-charts": ["kubernetes-cluster"],
+          "service-mesh-config": ["kubernetes-cluster"],
+          "ingress-setup": ["kubernetes-cluster"]
+        },
+        "decisionPoints": [
+          {
+            "key": "kubernetesSetup",
+            "question": "Managed Kubernetes or self-managed?",
+            "options": ["AWS EKS", "GCP GKE", "Self-managed (kubeadm)", "Kind (local)"],
+            "default": "AWS EKS"
+          }
+        ]
+      },
+      {
+        "phase": "Monitoring & Observability",
+        "description": "Set up monitoring, logging, and tracing",
+        "skills": [
+          "prometheus-setup",
+          "grafana-setup",
+          "elasticsearch-logging",
+          "jaeger-tracing"
+        ],
+        "parallelizable": true,
+        "dependencies": {}
+      },
+      {
+        "phase": "Security",
+        "description": "Configure security and secrets management",
+        "skills": [
+          "vault-secrets-management",
+          "rbac-setup",
+          "network-policies",
+          "pod-security-policies"
+        ],
+        "parallelizable": true,
+        "dependencies": {
+          "rbac-setup": ["kubernetes-cluster"],
+          "network-policies": ["kubernetes-cluster"]
+        }
+      }
+    ],
+    "successMetrics": [
+      "✅ Cloud account configured",
+      "✅ VPC and networking set up",
+      "✅ Kubernetes cluster running",
+      "✅ Docker images building and pushing",
+      "✅ Helm charts deployed",
+      "✅ Monitoring and alerting active",
+      "✅ Secrets management configured"
+    ]
+  },
+  {
+    "id": "mobile-app",
+    "name": "React Native Mobile App",
+    "description": "Cross-platform mobile application with iOS and Android",
+    "estimatedTime": "50-60 hours (6-8 weeks)",
+    "complexity": "advanced",
+    "tags": ["mobile", "react-native", "ios", "android"],
+    "phases": [
+      {
+        "phase": "Project Setup",
+        "description": "Initialize React Native project",
+        "skills": [
+          "react-native-init",
+          "expo-setup",
+          "navigation-setup",
+          "state-management"
+        ],
+        "parallelizable": true,
+        "dependencies": {
+          "navigation-setup": ["react-native-init"],
+          "state-management": ["react-native-init"]
+        }
+      },
+      {
+        "phase": "Core Screens",
+        "description": "Build main app screens",
+        "skills": [
+          "component-design",
+          "form-handling",
+          "api-integration",
+          "storage-setup"
+        ],
+        "parallelizable": true,
+        "dependencies": {
+          "api-integration": ["state-management"]
+        }
+      },
+      {
+        "phase": "Backend Integration",
+        "description": "Connect to backend services",
+        "skills": [
+          "auth-integration",
+          "api-setup",
+          "push-notifications",
+          "offline-sync"
+        ],
+        "parallelizable": true,
+        "dependencies": {
+          "auth-integration": ["component-design"],
+          "push-notifications": ["backend-setup"]
+        }
+      },
+      {
+        "phase": "Testing & Quality",
+        "description": "Test and optimize app",
+        "skills": [
+          "unit-tests",
+          "integration-tests",
+          "performance-optimization",
+          "code-review"
+        ],
+        "parallelizable": true,
+        "dependencies": {
+          "integration-tests": ["api-integration"]
+        }
+      },
+      {
+        "phase": "Deployment",
+        "description": "Release to app stores",
+        "skills": [
+          "ios-build",
+          "android-build",
+          "app-store-submit",
+          "play-store-submit"
+        ],
+        "parallelizable": false,
+        "dependencies": {
+          "ios-build": ["unit-tests"],
+          "android-build": ["unit-tests"],
+          "app-store-submit": ["ios-build"],
+          "play-store-submit": ["android-build"]
+        }
+      }
+    ],
+    "successMetrics": [
+      "✅ App compiles for iOS and Android",
+      "✅ Core features working",
+      "✅ Backend integration complete",
+      "✅ Tests passing",
+      "✅ Published to App Store",
+      "✅ Published to Google Play Store",
+      "✅ First user feedback received"
+    ]
+  },
+  {
+    "id": "backend-api",
+    "name": "Production Backend API",
+    "description": "Scalable REST API with database, caching, and monitoring",
+    "estimatedTime": "25-35 hours (3-4 weeks)",
+    "complexity": "intermediate",
+    "tags": ["backend", "api", "microservice", "rest"],
+    "phases": [
+      {
+        "phase": "Foundation",
+        "description": "Set up framework and database",
+        "skills": [
+          "express-setup",
+          "database-config",
+          "orm-setup",
+          "middleware-config"
+        ],
+        "parallelizable": true,
+        "dependencies": {
+          "orm-setup": ["database-config"]
+        }
+      },
+      {
+        "phase": "API Design",
+        "description": "Design and implement API endpoints",
+        "skills": [
+          "api-design",
+          "route-setup",
+          "request-validation",
+          "error-handling"
+        ],
+        "parallelizable": true,
+        "dependencies": {
+          "route-setup": ["express-setup"]
+        }
+      },
+      {
+        "phase": "Authentication & Security",
+        "description": "Secure the API",
+        "skills": [
+          "jwt-auth",
+          "rate-limiting",
+          "cors-config",
+          "input-sanitization"
+        ],
+        "parallelizable": true,
+        "dependencies": {}
+      },
+      {
+        "phase": "Performance",
+        "description": "Optimize for scale",
+        "skills": [
+          "caching-setup",
+          "redis-config",
+          "database-optimization",
+          "query-optimization"
+        ],
+        "parallelizable": true,
+        "dependencies": {
+          "redis-config": ["api-design"]
+        }
+      },
+      {
+        "phase": "Deployment",
+        "description": "Deploy to production",
+        "skills": [
+          "docker-containerize",
+          "ci-cd-setup",
+          "deployment-config",
+          "monitoring-setup"
+        ],
+        "parallelizable": true,
+        "dependencies": {}
+      }
+    ],
+    "successMetrics": [
+      "✅ API endpoints working",
+      "✅ Database operations optimized",
+      "✅ Authentication implemented",
+      "✅ Rate limiting active",
+      "✅ Caching working",
+      "✅ Tests passing (>85% coverage)",
+      "✅ Deployed to production"
+    ]
+  }
+]
