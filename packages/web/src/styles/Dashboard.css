@@ -1,0 +1,440 @@
+/* Antigravity Expert System Web Dashboard Styles */
+
+:root {
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --secondary: #8b5cf6;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --bg: #0f172a;
+  --bg-lighter: #1e293b;
+  --bg-light: #334155;
+  --text: #f1f5f9;
+  --text-dim: #cbd5e1;
+  --border: #475569;
+  --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Dashboard Layout */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--bg);
+}
+
+.dashboard-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.dashboard-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.dashboard-header p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Main Container */
+.dashboard-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.skills-panel {
+  width: 300px;
+  background-color: var(--bg-lighter);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.skills-panel h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skill-item {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.3s ease;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.skill-item:hover {
+  background-color: var(--bg-lighter);
+  border-color: var(--primary);
+  transform: translateX(4px);
+}
+
+.skill-item.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.skill-name {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.skill-category {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: 0.25rem;
+}
+
+.skill-item.active .skill-category {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.skill-difficulty {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.skill-item.active .skill-difficulty {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Execution Panel */
+.execution-panel {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  background-color: var(--bg);
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-dim);
+}
+
+.empty-state h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+/* Skill Header */
+.skill-header {
+  margin-bottom: 2rem;
+}
+
+.skill-header h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.skill-header p {
+  color: var(--text-dim);
+  font-size: 1.1rem;
+}
+
+/* Sections */
+section {
+  background-color: var(--bg-lighter);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+section h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+/* Configuration */
+.config-section {
+  background: linear-gradient(135deg, var(--bg-lighter) 0%, var(--bg-light) 100%);
+}
+
+.config-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.config-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.config-group label,
+.param-group label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.config-group input[type='checkbox'] {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.config-group select,
+.config-group input,
+.param-group input,
+.param-group select {
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  color: var(--text);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.config-group select:hover,
+.config-group input:hover,
+.param-group input:hover,
+.param-group select:hover {
+  border-color: var(--primary);
+}
+
+.config-group select:focus,
+.config-group input:focus,
+.param-group input:focus,
+.param-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background-color: var(--bg);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Parameters */
+.params-section {
+  background: linear-gradient(135deg, var(--bg-lighter) 0%, var(--bg-light) 100%);
+}
+
+.param-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.param-group:last-child {
+  margin-bottom: 0;
+}
+
+/* Button */
+.execute-button {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.3);
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.execute-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px rgba(99, 102, 241, 0.4);
+}
+
+.execute-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.execute-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Output Section */
+.output-section {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.output-console {
+  background-color: var(--bg);
+  padding: 1rem;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.9rem;
+  max-height: 400px;
+  overflow-y: auto;
+  line-height: 1.8;
+}
+
+.output-line {
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  word-break: break-word;
+}
+
+.output-line:contains('✅') {
+  color: var(--success);
+}
+
+.output-line:contains('❌') {
+  color: var(--danger);
+}
+
+.output-line:contains('⚠️') {
+  color: var(--warning);
+}
+
+.output-line:contains('━') {
+  color: var(--border);
+  margin: 0.5rem 0;
+}
+
+/* Footer */
+.dashboard-footer {
+  background-color: var(--bg-lighter);
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.dashboard-footer a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.dashboard-footer a:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .skills-panel {
+    width: 100%;
+    max-height: 250px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 1rem;
+  }
+
+  .skills-panel h2 {
+    display: none;
+  }
+
+  .skills-list {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .skill-item {
+    flex-shrink: 0;
+    width: 200px;
+  }
+
+  .config-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    padding: 2rem 1rem;
+  }
+
+  .dashboard-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .execution-panel {
+    padding: 1rem;
+  }
+
+  section {
+    padding: 1rem;
+  }
+
+  .skill-header h2 {
+    font-size: 1.5rem;
+  }
+}

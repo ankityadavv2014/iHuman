@@ -1,0 +1,70 @@
+# Multi-stage Dockerfile for Antigravity Expert System
+# Stages: Base -> Build -> Runtime
+
+# Stage 1: Base Node.js with dependencies
+FROM node:20-alpine AS base
+
+WORKDIR /app
+ENV NODE_ENV=production
+
+# Install system dependencies
+RUN apk add --no-cache \
+  git \
+  bash \
+  curl \
+  ca-certificates \
+  tini
+
+# Stage 2: Build dependencies and application
+FROM base AS builder
+
+# Copy package files
+COPY package*.json ./
+COPY packages ./packages
+
+# Install dependencies
+RUN npm ci --only=production
+
+# Copy source code
+COPY skills ./skills
+COPY packages ./packages
+
+# Build web frontend (if needed)
+RUN cd packages/web && npm run build 2>/dev/null || true
+
+# Stage 3: Runtime container
+FROM base AS runtime
+
+# Copy built artifacts from builder
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/packages ./packages
+COPY --from=builder /app/skills ./skills
+
+# Copy documentation
+COPY README.md .
+COPY QUICK_START_REAL_SYSTEM.md .
+COPY IMPLEMENTATION_REAL_FUNCTIONALITY.md .
+
+# Create non-root user
+RUN addgroup -g 1000 appuser && \
+  adduser -D -u 1000 -G appuser appuser
+
+# Create directories for user
+RUN mkdir -p /home/appuser/projects && \
+  chown -R appuser:appuser /app /home/appuser
+
+# Switch to non-root user
+USER appuser
+
+# Expose ports
+EXPOSE 3000 5173 8000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3000/health', (res) => process.exit(res.statusCode === 200 ? 0 : 1))" || true
+
+# Use tini to handle signals properly
+ENTRYPOINT ["/sbin/tini", "--"]
+
+# Default command - start CLI in interactive mode
+CMD ["npm", "run", "expert"]

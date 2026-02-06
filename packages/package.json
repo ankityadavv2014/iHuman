@@ -1,0 +1,19 @@
+{
+  "name": "antigravity-skills-monorepo",
+  "version": "1.0.0",
+  "description": "Antigravity Skills - Multi-platform application",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=@antigravity/web & npm run dev --workspace=@antigravity/cli",
+    "dev:web": "npm run dev --workspace=@antigravity/web",
+    "dev:cli": "npm run dev --workspace=@antigravity/cli",
+    "build": "npm run build --workspaces",
+    "build:web": "npm run build --workspace=@antigravity/web",
+    "build:cli": "npm run build --workspace=@antigravity/cli",
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces"
+  }
+}

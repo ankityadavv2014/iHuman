@@ -1,0 +1,17 @@
+{
+  "name": "react-setup",
+  "version": "1.0.0",
+  "description": "Generated from react-setup skill",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "react-setup",
+    "intermediate",
+    "security"
+  ],
+  "author": "ihuman",
+  "license": "MIT"
+}

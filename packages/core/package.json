@@ -1,0 +1,22 @@
+{
+  "name": "@antigravity/core",
+  "version": "1.0.0",
+  "description": "Core skill engine for parsing, searching, and managing skills",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "test": "jest"
+  },
+  "dependencies": {
+    "fs-extra": "^11.1.1",
+    "gray-matter": "^4.0.3",
+    "lunr": "^2.3.9",
+    "markdown-it": "^13.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

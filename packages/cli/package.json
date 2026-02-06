@@ -1,0 +1,25 @@
+{
+  "name": "@antigravity/cli",
+  "version": "2.0.0",
+  "description": "CLI tool for Antigravity Expert Skills",
+  "main": "bin/cli.js",
+  "bin": {
+    "antigravity-skills": "./bin/cli.js",
+    "antigravity-expert": "./bin/expert.js"
+  },
+  "scripts": {
+    "start": "node bin/cli.js",
+    "expert": "node bin/expert.js",
+    "dev": "node bin/expert.js"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "keywords": [
+    "antigravity",
+    "skills",
+    "expert",
+    "automation",
+    "cli"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "security-audit",
+  "version": "1.0.0",
+  "description": "Generated from security audit skill",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "security audit",
+    "intermediate",
+    "security"
+  ],
+  "author": "ihuman",
+  "license": "MIT"
+}

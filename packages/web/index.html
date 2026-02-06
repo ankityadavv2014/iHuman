@@ -3,146 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ihuman - Skill Execution Platform</title>
+    <meta name="description" content="iHuman - Enterprise Skill Execution Platform">
+    <title>iHuman - Skill Execution Platform</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <div class="dashboard">
-        <!-- Sidebar Navigation -->
-        <div class="sidebar">
-            <h1>ihuman</h1>
-            
-            <!-- Tab Navigation -->
-            <div class="nav-tabs">
-                <button class="nav-tab active" data-tab="skills">Skills</button>
-                <button class="nav-tab" data-tab="agency">🎭 Agency</button>
+    <div id="app">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1 class="logo">iHuman</h1>
+                    <span class="tagline">Enterprise Skill Execution Platform</span>
+                </div>
+                <div class="header-controls">
+                    <input type="search" id="globalSearch" placeholder="Search skills (Cmd+K)..." class="search-input">
+                    <button id="themeToggle" class="theme-btn" title="Toggle dark/light mode">🌙</button>
+                </div>
             </div>
+        </header>
 
-            <!-- Skills Tab Content -->
-            <div id="skills-tab" class="tab-content active">
-                <h3>Available Skills</h3>
-                <ul class="skill-list">
-                    <li class="skill-item active" data-skill="react-setup">react-setup</li>
-                    <li class="skill-item" data-skill="typescript-config">typescript-config</li>
-                    <li class="skill-item" data-skill="api-design">api-design</li>
-                    <li class="skill-item" data-skill="security-audit">security-audit</li>
-                    <li class="skill-item" data-skill="docker-setup">docker-setup</li>
-                    <li class="skill-item" data-skill="ci-cd-setup">ci-cd-setup</li>
-                    <li class="skill-item" data-skill="testing-strategy">testing-strategy</li>
-                    <li class="skill-item" data-skill="performance-optimization">performance-optimization</li>
-                </ul>
-            </div>
+        <div class="main-container">
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <h2 class="nav-title">Categories</h2>
+                    <ul class="category-list">
+                        <li><button class="cat-btn active" data-category="all">All Skills</button></li>
+                        <li><button class="cat-btn" data-category="frontend">Frontend</button></li>
+                        <li><button class="cat-btn" data-category="backend">Backend</button></li>
+                        <li><button class="cat-btn" data-category="devops">DevOps</button></li>
+                        <li><button class="cat-btn" data-category="ai-ml">AI/ML</button></li>
+                    </ul>
 
-            <!-- Agency Tab Content -->
-            <div id="agency-tab" class="tab-content">
-                <h3>Agency Mode</h3>
-                <p style="color: var(--text-muted); font-size: 12px; margin: 0;">
-                    Describe what you want to build, and the system will orchestrate the right skills automatically.
-                </p>
-            </div>
-        </div>
-
-        <!-- Main Content Area -->
-        <div class="main">
-            <!-- Skills View -->
-            <div id="skills-view" class="view active">
-                <div class="content-header">
-                    <div>
-                        <h2 id="skillName">react-setup</h2>
-                        <p id="skillDesc">Setup a modern React project with TypeScript and tooling</p>
+                    <h2 class="nav-title">Filters</h2>
+                    <div class="filter-group">
+                        <label><input type="checkbox" class="filter-checkbox" data-filter="difficulty:1"> Beginner</label>
+                        <label><input type="checkbox" class="filter-checkbox" data-filter="difficulty:2"> Intermediate</label>
+                        <label><input type="checkbox" class="filter-checkbox" data-filter="difficulty:3"> Expert</label>
                     </div>
-                    <span class="status-badge status-ready" id="status">Ready</span>
+
+                    <h2 class="nav-title">Quick Links</h2>
+                    <ul class="quick-links">
+                        <li><a href="#" class="link" id="historyLink">📊 History</a></li>
+                        <li><a href="#" class="link" id="analyticsLink">📈 Analytics</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <main class="main-content">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="skills">Skills Catalog</button>
+                    <button class="tab-btn" data-tab="history">History</button>
+                    <button class="tab-btn" data-tab="analytics">Analytics</button>
                 </div>
 
-                <!-- Configuration Panel -->
-                <div class="config-panel">
-                    <div class="config-group">
-                        <label>Project Name</label>
-                        <input type="text" id="projectName" placeholder="my-awesome-app" value="my-awesome-app">
-                    </div>
-
-                    <div class="config-group">
-                        <label>Expertise Level</label>
-                        <select id="level">
-                            <option value="beginner">👶 Beginner (Step-by-step)</option>
-                            <option value="intermediate" selected>🎯 Intermediate (Balanced)</option>
-                            <option value="expert">🚀 Expert (Auto-execute)</option>
+                <div id="skills-tab" class="tab-content active">
+                    <div class="skills-header">
+                        <h2>Available Skills (626+)</h2>
+                        <select id="sortBy" class="sort-select">
+                            <option value="name">Sort by Name</option>
+                            <option value="rating">Sort by Rating</option>
+                            <option value="executions">By Popularity</option>
                         </select>
                     </div>
-
-                    <div class="config-group">
-                        <label>Expert Persona</label>
-                        <select id="persona">
-                            <option value="ai-engineer">🤖 AI Engineer</option>
-                            <option value="architect">🏗️ Architect</option>
-                            <option value="security" selected>🔒 Security</option>
-                            <option value="devops">⚙️ DevOps</option>
-                            <option value="fullstack">💻 Full-Stack</option>
-                        </select>
-                    </div>
-
-                    <div class="button-group">
-                        <button class="btn-primary" id="executeBtn">▶ Execute Skill</button>
-                        <button class="btn-secondary" id="dryRunBtn">🧪 Dry Run</button>
-                    </div>
+                    <div id="skillsGrid" class="skills-grid"></div>
                 </div>
 
-                <!-- Output Display -->
-                <div class="output-panel">
-                    <h3>Execution Output</h3>
-                    <div id="output" class="output-display"></div>
-                </div>
-            </div>
-
-            <!-- Agency View -->
-            <div id="agency-view" class="view">
-                <!-- Phase 1: Objective Input -->
-                <div id="phase1-objective" class="agency-phase active">
-                    <h2>🎯 Phase 1: Define Objective</h2>
-                    <p>What are you building?</p>
-                    <textarea id="agencyObjective" placeholder="e.g., Build a SaaS MVP, Create a machine learning pipeline, Setup DevOps infrastructure..." style="width: 100%; height: 100px; padding: 12px; margin: 20px 0; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text);"></textarea>
-                    <button class="btn-primary" id="analyzeBtn">📊 Analyze Objective</button>
+                <div id="history-tab" class="tab-content">
+                    <h2>Execution History</h2>
+                    <div id="historyList" class="history-list"></div>
                 </div>
 
-                <!-- Phase 2: Workflow Recommendation -->
-                <div id="phase2-recommendation" class="agency-phase" style="display: none;">
-                    <h2>✨ Phase 2: Recommended Workflow</h2>
-                    <div id="workflow-recommendation" style="display: none;">
-                        <h3 id="workflow-title">Recommended Workflow</h3>
-                        <p id="workflow-description" style="color: var(--text-muted); margin: 10px 0 20px 0;"></p>
-                        
-                        <div id="decisions-container" style="margin: 20px 0;"></div>
-                        
-                        <button class="btn-primary" id="startBtn" style="width: 100%;">▶ Start Orchestration</button>
-                    </div>
-                </div>
-
-                <!-- Phase 3: Execution Progress -->
-                <div id="phase3-progress" class="agency-phase" style="display: none;">
-                    <h2>⚡ Phase 3: Execution in Progress</h2>
-                    <div id="orchestration-progress" style="display: none;">
-                        <div style="margin: 20px 0;">
-                            <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 4px; height: 30px; overflow: hidden;">
-                                <div id="progress-bar" style="background: linear-gradient(90deg, #6366f1, #8b5cf6); height: 100%; width: 0%; transition: width 0.3s; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: 600;"></div>
-                            </div>
-                            <p id="progress-text" style="margin-top: 10px; color: var(--text-muted);">0/26 skills completed</p>
+                <div id="analytics-tab" class="tab-content">
+                    <div class="analytics-grid">
+                        <div class="stat-card">
+                            <h3>Total Executions</h3>
+                            <p class="stat-number" id="totalExecutions">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Success Rate</h3>
+                            <p class="stat-number" id="successRate">0%</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Avg Time</h3>
+                            <p class="stat-number" id="avgTime">0ms</p>
                         </div>
                     </div>
                 </div>
+            </main>
+        </div>
+    </div>
 
-                <!-- Phase 4: Completion -->
-                <div id="phase4-complete" class="agency-phase" style="display: none;">
-                    <h2>🎉 Phase 4: Complete</h2>
-                    <div id="orchestration-complete" style="display: none;">
-                        <p id="completion-message" style="margin: 20px 0; font-size: 16px; color: var(--success);"></p>
-                        <div id="completion-details" style="background: var(--bg); border-left: 4px solid var(--success); padding: 15px; border-radius: 4px; margin: 20px 0;"></div>
-                        <button class="btn-secondary" id="resetBtn" style="width: 100%;">↺ Reset</button>
+    <div id="executionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Execute Skill</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="executionForm">
+                    <div class="form-group">
+                        <label>Expertise:</label>
+                        <select id="expertiseLevel">
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate" selected>Intermediate</option>
+                            <option value="expert">Expert</option>
+                        </select>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label>Persona:</label>
+                        <select id="persona">
+                            <option value="full-stack" selected>Full-Stack</option>
+                            <option value="ai-engineer">AI Engineer</option>
+                            <option value="architect">Architect</option>
+                            <option value="security">Security</option>
+                        </select>
+                    </div>
+                    <div id="executionProgress" style="display:none;">
+                        <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+                        <div id="progressLog" class="progress-log"></div>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" id="dryRunBtn" class="btn btn-secondary">🔍 Dry Run</button>
+                        <button type="submit" class="btn btn-primary">▶️ Execute</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
+    <div id="toastContainer" class="toast-container"></div>
     <script src="/app.js"></script>
 </body>
 </html>

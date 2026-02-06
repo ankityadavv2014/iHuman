@@ -1,0 +1,669 @@
+/* 🎭 Agency Component Styles */
+
+.agency-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+.agency-header {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.agency-header h1 {
+  font-size: 2.5em;
+  color: #6366f1;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.agency-header p {
+  font-size: 1.1em;
+  color: #666;
+  margin: 0;
+}
+
+.agency-main {
+  display: flex;
+  justify-content: center;
+}
+
+.agency-section {
+  width: 100%;
+  max-width: 800px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Section 1: Objective Collection */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.objective-collection h2 {
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.objective-collection .subtitle {
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 1em;
+}
+
+.objective-textarea {
+  width: 100%;
+  height: 120px;
+  padding: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1em;
+  font-family: inherit;
+  resize: vertical;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.objective-textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.objective-textarea:disabled {
+  background-color: #f5f5f5;
+  color: #ccc;
+}
+
+.objective-examples {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.objective-examples p {
+  margin: 0 0 15px 0;
+  font-weight: 600;
+  color: #333;
+}
+
+.objective-examples ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.objective-examples li {
+  padding: 8px 0;
+  color: #666;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.objective-examples li:last-child {
+  border-bottom: none;
+}
+
+.objective-examples li:before {
+  content: "💡 ";
+  margin-right: 8px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Section 2: Workflow Configuration */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.workflow-config h2 {
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.workflow-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  border-radius: 8px;
+  color: white;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-item .label {
+  font-weight: 600;
+  font-size: 0.9em;
+  opacity: 0.9;
+}
+
+.summary-item .value {
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
+.phases-overview {
+  margin-bottom: 30px;
+}
+
+.phases-overview h3 {
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.phases-overview h3:before {
+  content: "📋";
+  margin-right: 8px;
+}
+
+.phase-item {
+  border-left: 4px solid #6366f1;
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.phase-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.phase-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: #6366f1;
+  color: white;
+  border-radius: 50%;
+  font-size: 0.9em;
+}
+
+.phase-title {
+  flex: 1;
+  color: #333;
+}
+
+.phase-count {
+  background: #e0e7ff;
+  color: #4f46e5;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: 600;
+}
+
+.phase-skills {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  columns: 2;
+  column-gap: 20px;
+}
+
+.phase-skills li {
+  padding: 4px 0;
+  color: #666;
+  font-size: 0.9em;
+  break-inside: avoid;
+}
+
+.decision-points {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #fef3c7;
+  border-left: 4px solid #f59e0b;
+  border-radius: 4px;
+}
+
+.decision-points h3 {
+  font-size: 1.1em;
+  color: #92400e;
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+.decision-item {
+  margin-bottom: 15px;
+}
+
+.decision-item label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.decision-item select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+
+.decision-item select:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Section 3: Orchestration Progress */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.orchestration-progress h2 {
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 25px;
+}
+
+.execution-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.phase-execution {
+  border-left: 4px solid #6366f1;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.phase-execution .phase-title {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12px;
+  font-size: 1em;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  transition: all 0.3s ease;
+  cursor: default;
+  position: relative;
+}
+
+.skill-icon {
+  font-size: 1.5em;
+  margin-bottom: 4px;
+}
+
+.skill-name {
+  text-align: center;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.skill-duration {
+  font-size: 0.75em;
+  color: #999;
+  margin-top: 4px;
+}
+
+.skill-pending {
+  background: #f0f0f0;
+  color: #999;
+  border: 1px solid #e0e0e0;
+}
+
+.skill-running {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: white;
+  border: none;
+  animation: pulse 1s infinite;
+}
+
+.skill-complete {
+  background: linear-gradient(135deg, #34d399, #10b981);
+  color: white;
+  border: none;
+}
+
+.skill-error {
+  background: linear-gradient(135deg, #f87171, #ef4444);
+  color: white;
+  border: none;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.rollback-option {
+  margin-top: 20px;
+  padding: 15px;
+  background: #fee2e2;
+  border-left: 4px solid #ef4444;
+  border-radius: 4px;
+}
+
+.rollback-option p {
+  color: #7f1d1d;
+  margin: 0 0 10px 0;
+  font-size: 0.9em;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Section 4: Orchestration Complete */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.orchestration-complete h2 {
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.success-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.summary-stat {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #10b981, #34d399);
+  border-radius: 8px;
+  color: white;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5em;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.9em;
+  opacity: 0.9;
+}
+
+.completion-details,
+.next-steps {
+  margin-bottom: 30px;
+}
+
+.completion-details h3,
+.next-steps h3 {
+  font-size: 1.1em;
+  color: #333;
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+.completion-details ul,
+.next-steps ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.completion-details li,
+.next-steps li {
+  padding: 10px 0;
+  color: #666;
+  border-bottom: 1px solid #e0e0e0;
+  padding-left: 25px;
+  position: relative;
+}
+
+.completion-details li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: 700;
+}
+
+.next-steps li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #6366f1;
+  font-weight: 700;
+}
+
+.completion-details li:last-child,
+.next-steps li:last-child {
+  border-bottom: none;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Button Styles */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(99, 102, 241, 0.3);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #d0d0d0;
+}
+
+.btn-lg {
+  padding: 15px 40px;
+  font-size: 1.1em;
+  width: 100%;
+  justify-content: center;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Error & Status Messages */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.error-message {
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  border-left: 4px solid #ef4444;
+  color: #7f1d1d;
+  padding: 12px 15px;
+  border-radius: 4px;
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.error-message span {
+  font-size: 1.2em;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Animations */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Responsive Design */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (max-width: 768px) {
+  .agency-section {
+    padding: 20px;
+  }
+
+  .agency-header h1 {
+    font-size: 1.8em;
+  }
+
+  .workflow-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .phase-skills {
+    columns: 1;
+  }
+
+  .success-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
+  .btn-lg {
+    padding: 12px 20px;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .agency-container {
+    padding: 10px;
+  }
+
+  .agency-section {
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .agency-header h1 {
+    font-size: 1.5em;
+  }
+
+  .objective-collection h2,
+  .workflow-config h2,
+  .orchestration-progress h2,
+  .orchestration-complete h2 {
+    font-size: 1.3em;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  }
+
+  .skill-item {
+    padding: 8px;
+    font-size: 0.75em;
+  }
+
+  .phase-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

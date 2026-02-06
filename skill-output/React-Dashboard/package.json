@@ -1,0 +1,17 @@
+{
+  "name": "react-dashboard",
+  "version": "1.0.0",
+  "description": "Generated from React Dashboard skill",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "React Dashboard",
+    "Intermediate",
+    "Frontend Developer"
+  ],
+  "author": "ihuman",
+  "license": "MIT"
+}
